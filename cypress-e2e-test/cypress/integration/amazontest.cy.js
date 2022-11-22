@@ -10,9 +10,9 @@ describe('Amazon Test Suite',()=>{
      
         cy.OpenAmazonHomePage()
 
-        cy.fixture('testdata').then((testdata)=>{
+        cy.fixture('testdata').then((td)=>{
 
-            testdata = testdata
+            testdata = td
         })
     })
 
