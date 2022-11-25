@@ -27,7 +27,7 @@
 require('@shelex/cypress-allure-plugin');
 
 //Open Amazon Application
-Cypress.Commands.add("OpenAmazonHomePage",()=>{
+Cypress.Commands.add('OpenAmazonHomePage',()=>{
 
     cy.visit('https://www.amazon.in') //Visit Amazon page
 })
