@@ -2,6 +2,8 @@
   "topBarMenuLink":"Mobiles",
   "mobileBrandName":"OnePlus",
   "mobileModelName":"OnePlus Nord CE 2 Lite 5G (Black Dusk, 6GB RAM, 128GB Storage)",
-  "validateMobilePriceValue":"18,999",
-  "validateMobilePriceInProductPageValue":"18999"
+  "validateMobilePriceValue":"18999",
+  "validateMobilePriceInProductPageValue":"18999",
+  "numberOfBrandsCheckboxes":"7",
+  "brandCheckBoxes":["OnePlus","boAt","Redmi","Fire-Boltt","MI","Apple","SanDisk"]
 }

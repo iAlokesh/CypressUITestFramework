@@ -1,3 +1,5 @@
+/// <reference types="Cypress" />
+
 import { expect } from "chai"
 import commonTopBar from "../support/page-objects/CommonTopBar"
 import mobilePhonesPage from "../support/page-objects/MobilePhonesPage"
@@ -16,7 +18,19 @@ describe('Amazon Test Suite',()=>{
         })
     })
 
-    it.only('Amazon Test',()=>{
+    it.only('Amazon Brandname Checkboxes Test',()=>{
+    
+        commonTopBar.clickOnMobilesLink(testdata.topBarMenuLink) //Click on Mobiles link in the home page
+
+        mobilePhonesPage.validateTheCountAndTheOrderOfTheBrandsCheckBoxes(testdata.numberOfBrandsCheckboxes,testdata.brandCheckBoxes) //Validate the number and order of the mobile brand name checkboxes 
+
+        testdata.brandCheckBoxes.forEach((brandName)=>{
+
+            mobilePhonesPage.checkMobileBrandCheckbox(brandName) //check brand name checkbox
+        })
+    })
+
+    it('Amazon Test',()=>{
 
         commonTopBar.clickOnMobilesLink(testdata.topBarMenuLink) //Click on Mobiles link in the home page
 

@@ -1,4 +1,5 @@
 import { expect } from "chai"
+import 'cypress-wait-until';
 
 class MobilePhonesPage{
 
@@ -6,11 +7,13 @@ class MobilePhonesPage{
 
     elements = {
            
-        brandNameCheckbox: ($brandName)=>cy.contains('[dir="auto"]',$brandName),
+        brandNameCheckbox: ($brandName)=>cy.contains('span[class="a-size-base a-color-base"]',$brandName),
         mobilePriceText: ($makeAndModelName)=> cy.contains($makeAndModelName)
                                                 .parents('[data-cel-widget^="search_result_"]')
                                                 .find('.a-price-whole'), 
-        mobileLink: ($makeAndModelName)=> cy.contains($makeAndModelName)
+        mobileLink: ($makeAndModelName)=> cy.contains($makeAndModelName),
+        brandNameCheckboxes: ()=> cy.get('#s-refinements>div:nth-child(5)>ul>li')
+                         
 }
     
     // Actions
@@ -26,7 +29,7 @@ class MobilePhonesPage{
 
         this.elements.mobilePriceText($makeAndModelName)
         .then(price=>{
-            cy.wrap(price.text()).should('eq',$price)
+            cy.wrap(price.text().replace(/[^\w\s]/gi, '')).should('eq',$price)
         })
     }
 
@@ -38,6 +41,18 @@ class MobilePhonesPage{
         .then(ml=>{
              cy.wrap(ml).click() 
         })
+    }
+
+    //Validate the number of checkboxes and the order of the checkboxes for Mobiles brand
+    validateTheCountAndTheOrderOfTheBrandsCheckBoxes(numberOfBrands, expectedBrandsNameInOrder){
+
+        this.elements.brandNameCheckboxes()
+        .each((item,index,list)=>{
+           expect(list).to.have.length(numberOfBrands)
+           cy.waitUntil(() => cy.wrap(item)
+            .should("contain.text",expectedBrandsNameInOrder[index])
+          )
+        }) 
     }
 }
 
