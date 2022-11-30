@@ -1,4 +1,5 @@
 /// <reference types="Cypress" />
+/// <reference types = "Cypress-iframe"/>
 
 import { expect } from "chai"
 import commonTopBar from "../support/page-objects/CommonTopBar"
